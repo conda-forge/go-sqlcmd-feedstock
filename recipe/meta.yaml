@@ -1,5 +1,5 @@
 {% set name = "go-sqlcmd" %}
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 52ee47b84a0f932fc83881d6320588d1b0c7fd944309dd8ed92828ee3e3bdaff
+  sha256: 082a83e1e3b939b3f67ba631e7759dc6aff1821e1cf55127aee7557d479eb1d2
 
 build:
   number: 0
