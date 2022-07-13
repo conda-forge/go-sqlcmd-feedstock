@@ -1,5 +1,5 @@
 {% set name = "go-sqlcmd" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 082a83e1e3b939b3f67ba631e7759dc6aff1821e1cf55127aee7557d479eb1d2
+  sha256: ee435eac550efdcde0c0e7b9a2eba1f075a9f7c8c790fa4941eead8aca3fd623
 
 build:
   number: 0
@@ -29,7 +29,7 @@ test:
 
 about:
   home: https://github.com/microsoft/go-sqlcmd
-  summary: 'Native go implementation of sqlcmd'
+  summary: Native go implementation of sqlcmd
   license: MIT
   license_file:
     - LICENSE
