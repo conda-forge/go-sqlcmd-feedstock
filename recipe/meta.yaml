@@ -13,8 +13,9 @@ build:
   number: 0
   script: |
     set -eoux pipefail
-    go install -ldflags="-X main.version={{ version }}" ./cmd/modern
-    go-licenses save --save_path="./thirdparty" ./cmd/sqlcmd
+    go build -ldflags="-X main.version={{ version }}" -o $PREFIX/bin/sqlcmd ./cmd/modern  # [not win]
+    go build -ldflags="-X main.version={{ version }}" -o %PREFIX%/bin/sqlcmd ./cmd/modern  # [win]
+    go-licenses save --save_path="./thirdparty" ./cmd/modern
 
 requirements:
   build:
