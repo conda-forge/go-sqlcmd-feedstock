@@ -24,7 +24,8 @@ requirements:
 
 test:
   commands:
-    - sqlcmd --help
+    - sqlcmd --help  # [not win]
+    - sqlcmd -?  # [win]
 
 about:
   home: https://github.com/microsoft/go-sqlcmd
