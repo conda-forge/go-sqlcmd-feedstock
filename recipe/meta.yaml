@@ -1,5 +1,5 @@
 {% set name = "go-sqlcmd" %}
-{% set version = "0.10.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,15 @@ package:
 
 source:
   url: https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 718f2e770d4b2d04521b4988c6e353d0b8df4a559582da3a3e8627dbbbdd8c40
+  sha256: dc0d6aa4006347640dc3948fbdcab73b4766a36b255c1597b82b623ac551b15f
 
 build:
   number: 0
   script: |
     set -eoux pipefail
-    go install ./cmd/sqlcmd
-    # FIXME: Remove ignore once depending on 0.8.3 or later
-    # https://github.com/Azure/azure-sdk-for-go/issues/16203#issuecomment-971695479
-    go-licenses save --ignore="github.com/Azure/azure-sdk-for-go" --save_path="./thirdparty" ./cmd/sqlcmd
+    go build -ldflags="-X main.version={{ version }}" -o $PREFIX/bin/sqlcmd ./cmd/modern  # [not win]
+    go build -ldflags="-X main.version={{ version }}" -o %PREFIX%/bin/sqlcmd ./cmd/modern  # [win]
+    go-licenses save --save_path="./thirdparty" ./cmd/modern
 
 requirements:
   build:
@@ -25,7 +24,8 @@ requirements:
 
 test:
   commands:
-    - sqlcmd --help
+    - sqlcmd --help  # [not win]
+    - sqlcmd -?  # [win]
 
 about:
   home: https://github.com/microsoft/go-sqlcmd
