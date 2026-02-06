@@ -10,7 +10,7 @@ source:
   sha256: c11ff96b6c31314f258a7a58e52e525c525452865591a581c98a37f6c0a7df60
 
 build:
-  number: 0
+  number: 1
   script: |
     set -eoux pipefail
     go build -ldflags="-X main.version={{ version }}" -o $PREFIX/bin/sqlcmd ./cmd/modern  # [not win]
