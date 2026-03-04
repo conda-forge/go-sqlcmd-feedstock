@@ -1,5 +1,5 @@
 {% set name = "go-sqlcmd" %}
-{% set version = "1.9.0" %}
+{% set version = "1.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c11ff96b6c31314f258a7a58e52e525c525452865591a581c98a37f6c0a7df60
+  sha256: 47fa2637d492c39ea75a0b41da4bbd127bf1891116f04861a96fba8bc5e654b6
 
 build:
-  number: 1
+  number: 0
   script: |
     set -eoux pipefail
     go build -ldflags="-X main.version={{ version }}" -o $PREFIX/bin/sqlcmd ./cmd/modern  # [not win]
